@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 class GildedRoseTest {
 
+	private static final String FOO = "foo";
+
 	private Item createAndUpdate(String name, int sellIn, int quality) {
 		Item[] items = new Item[] { new Item(name, sellIn, quality) };
 		GildedRose app = new GildedRose(items);
@@ -15,26 +17,26 @@ class GildedRoseTest {
 
 	@Test
 	void junitFrameworkWorks() {
-		Item item = createAndUpdate("foo", 0, 0);
-		assertEquals("foo", item.name);
+		Item item = createAndUpdate(FOO, 0, 0);
+		assertEquals(FOO, item.name);
 	}
 
 	@Test
 	void systemLowersValues() {
-		Item item = createAndUpdate("foo", 15, 25);
+		Item item = createAndUpdate(FOO, 15, 25);
 		assertEquals(14, item.sellIn);
 		assertEquals(24, item.quality);
 	}
 
 	@Test
 	void qualityDegradesTwicesAsFast() {
-		Item item = createAndUpdate("foo", 0, 17);
+		Item item = createAndUpdate(FOO, 0, 17);
 		assertEquals(15, item.quality);
 	}
 
 	@Test
 	void qualityIsNeverNegative() {
-		Item item = createAndUpdate("foo", 0, 0);
+		Item item = createAndUpdate(FOO, 0, 0);
 		assertEquals(0, item.quality);
 	}
 
@@ -46,7 +48,7 @@ class GildedRoseTest {
 
 	@Test
 	void qualityIsNeverMoreThanMaximum() {
-		Item item = createAndUpdate("foo", 15, 52);
+		Item item = createAndUpdate(FOO, 15, 52);
 		assertEquals(51, item.quality);
 
 		item = createAndUpdate(GildedRose.AGED_BRIE, 15, GildedRose.MAXIMUM_QUALITY);
@@ -105,7 +107,7 @@ class GildedRoseTest {
 
 	@Test
 	void degradeInQualityUnlessSulfuras() {
-		Item item = createAndUpdate("foo", -1, 1);
+		Item item = createAndUpdate(FOO, -1, 1);
 		assertEquals(0, item.quality);
 		
 		item = createAndUpdate(GildedRose.SULFURAS, -1, 1);

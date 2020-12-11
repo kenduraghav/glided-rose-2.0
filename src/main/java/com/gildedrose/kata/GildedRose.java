@@ -1,7 +1,8 @@
 package com.gildedrose.kata;
 
 class GildedRose {
-    public static final int SELL_IN_QTY_MINIMUM = 11;
+    public static final int BACKSTAGE_PASS_THRESHOLD2 = 6;
+	public static final int BACKSTAGE_PASS_THRESHOLD1 = 11;
 	public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 	public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 	public static final int MAXIMUM_QUALITY = 50;
@@ -26,13 +27,13 @@ class GildedRose {
                     items[i].quality = items[i].quality + 1;
 
                     if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                        if (items[i].sellIn < SELL_IN_QTY_MINIMUM) {
+                        if (items[i].sellIn < BACKSTAGE_PASS_THRESHOLD1) {
                             if (items[i].quality < MAXIMUM_QUALITY) {
                                 items[i].quality = items[i].quality + 1;
                             }
                         }
 
-                        if (items[i].sellIn < 6) {
+                        if (items[i].sellIn < BACKSTAGE_PASS_THRESHOLD2) {
                             if (items[i].quality < MAXIMUM_QUALITY) {
                                 items[i].quality = items[i].quality + 1;
                             }
